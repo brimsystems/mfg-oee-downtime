@@ -8,7 +8,7 @@ An **analytics and ML layer** is then built on top of that integrated dataset, i
 
 1. **Analytics diagnostics report** that uncovers where OEE is lost and what drives unplanned downtime
 2. **KPI dashboard** that tracks OEE, reliability and maintenance, laid out by week and month
-3. **Machine learning model** that predicts each machine's remaining time to its next unplanned failure and flags it before it happens, supported by technical documentation and MLOps monitoring in production
+3. **Machine learning model** that predicts each machine's remaining time to its next unplanned failure and flags it before it happens, enabling predictive maintenance. Supported by technical documentation and MLOps monitoring in production
 
 The machine learning model's failure predictions are embedded into the company's existing CMMS, as shown below:
 
