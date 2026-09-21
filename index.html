@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OEE & Predictive Maintenance, Deliverables</title>
+  <style>
+    :root {
+      --brand: #322B4B; --accent: #381FA1; --light: #54C0E8;
+      --text: #000000; --muted: #555555; --line: #E6E8EC; --bg: #FFFFFF; --panel: #F3F5F7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; }
+    .page-header { background: var(--brand); color: #fff; padding: 22px 40px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+    .page-header .sub { font-size: 14px; opacity: 0.85; margin-top: 3px; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 36px 40px 72px; }
+    .intro { font-size: 16px; color: #222; margin-bottom: 28px; }
+    .intro a { color: var(--accent); }
+    .card { display: block; text-decoration: none; color: inherit;
+      border: 1px solid var(--line); border-left: 4px solid var(--light);
+      border-radius: 4px; padding: 16px 20px; margin-bottom: 14px; transition: box-shadow .12s, border-color .12s; }
+    .card:hover { box-shadow: 0 2px 10px rgba(50,43,75,0.12); border-left-color: var(--brand); }
+    .card.primary { border-left-color: var(--brand); background: var(--panel); }
+    .card .row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .num { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 1px; }
+    .title { font-size: 17px; font-weight: 700; color: var(--brand); }
+    .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+      color: #fff; background: var(--brand); border-radius: 3px; padding: 2px 7px; }
+    .desc { font-size: 14px; color: var(--muted); margin-top: 5px; }
+    .open { font-size: 13px; font-weight: 600; color: var(--brand); margin-top: 8px; }
+    .foot { margin-top: 30px; font-size: 13px; color: #999; border-top: 1px solid var(--line); padding-top: 16px; }
+    .foot a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>Manufacturing Data Platform: OEE &amp; Predictive Maintenance</h1>
+    <div class="sub">Deliverables for a precision machining shop, from integrated data to a live, embedded predictive-maintenance model.</div>
+  </div>
+
+  <div class="wrap">
+    <p class="intro">Six deliverables trace the work end to end: a diagnosis of where OEE is lost and what
+    drives unplanned downtime, a machine learning model that predicts each machine's time to its next failure,
+    that prediction delivered inside the existing maintenance system, and the MLOps monitoring that keeps it
+    honest over time. Full detail is in the <a href="README.md">README</a>.</p>
+
+    <a class="card primary" href="docs/index.html">
+      <div class="row"><span class="num">01</span><span class="title">CMMS Maintenance Queue</span><span class="tag">Primary deliverable</span></div>
+      <div class="desc">The model embedded in a Limble-style CMMS asset view: each machine's predicted days to next failure, OEE health and maintenance priority, ranked by urgency where planners already work.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <a class="card" href="docs/reports/analytics_report.html">
+      <div class="row"><span class="num">02</span><span class="title">Analytics Diagnostic Report</span></div>
+      <div class="desc">Where OEE is lost across availability, performance and quality, the downtime Pareto, PM compliance, and the cross-system conditions that drive unplanned failures.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <a class="card" href="docs/reports/dashboard.html">
+      <div class="row"><span class="num">03</span><span class="title">OEE KPI Dashboard</span></div>
+      <div class="desc">The recurring weekly and monthly view of OEE, MTBF and MTTR, and PM compliance by machine, for the managers who watch the fleet week to week.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <a class="card" href="docs/reports/model_overview.html">
+      <div class="row"><span class="num">04</span><span class="title">ML Model Overview &amp; Performance Report</span></div>
+      <div class="desc">A high-level model card: what the remaining-useful-life model predicts, how it performs, the downtime it helps avoid, and where its limits are.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <a class="card" href="docs/reports/technical_report.html">
+      <div class="row"><span class="num">05</span><span class="title">ML Technical Overview</span></div>
+      <div class="desc">The full technical detail: feature engineering, target construction, the time-based split, hyperparameter tuning, residual analysis, and calibration.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <a class="card" href="docs/reports/monitoring_report.html">
+      <div class="row"><span class="num">06</span><span class="title">MLOps Monitoring Report</span></div>
+      <div class="desc">Production monitoring across periods on four layers, performance, target, prediction, and feature drift, with an explicit, rules-based retraining decision.</div>
+      <div class="open">Open &rarr;</div>
+    </a>
+
+    <div class="foot">Built by Brian Davis, fractional data engineering and analytics partner for SMB manufacturers &middot;
+      <a href="mailto:brian@brimsystems.com">brian@brimsystems.com</a></div>
+  </div>
+</body>
+</html>

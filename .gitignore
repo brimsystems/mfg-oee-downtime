@@ -208,6 +208,9 @@ __marimo__/
 
 # Additional Settings
 
+# Internal operating brief, not published
+CLAUDE.md
+
 # Generated data and ML artifacts — regenerated from scripts (committed samples show the shape)
 data_source/raw/
 ml/data/
