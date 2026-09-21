@@ -32,7 +32,7 @@ The shop can now see where its production hours go and which losses are worth ad
 
 | # | Deliverable | What it is | Links |
 |---|---|---|---|
-| 1 | CMMS maintenance queue | The model embedded in a Limble-style asset view: each machine's predicted days to next failure, OEE health and maintenance priority, ranked by urgency. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/index.html) |
+| 1 | CMMS maintenance queue | The predictive maintenance model embedded in the shop's CMMS: each machine's predicted days to next failure, OEE health and maintenance priority, ranked by urgency. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/index.html) |
 | 2 | Analytics diagnostic report | Where OEE is lost across availability, performance and quality, the downtime Pareto, PM compliance, and the cross-system conditions that drive failures. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/analytics_report.html) |
 | 3 | KPI dashboard | The recurring weekly and monthly view of OEE, MTBF and MTTR, and PM compliance by machine, with historical trends. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/dashboard.html) |
 | 4 | ML model overview & performance report | A high-level model summary: what the model predicts, how it performs, the downtime it helps avoid, and its limits. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/model_overview.html) |
