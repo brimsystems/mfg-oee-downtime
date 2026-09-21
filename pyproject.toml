@@ -1,5 +1,5 @@
 [project]
-name = "mfg-oee-maintenance"
+name = "mfg-oee-downtime"
 version = "0.1.0"
 description = "OEE and predictive-maintenance data platform for discrete manufacturing"
 requires-python = ">=3.11"
