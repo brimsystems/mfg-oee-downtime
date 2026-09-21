@@ -1,0 +1,21 @@
+operator_id,operator_name,employee_number,shift,role,hire_date,certification,certification_expiry_date
+OPR-001,Allison Hill,1042,Shift A,Machinist,2022-03-04,CNC Level I,2026-06-25
+OPR-002,Noah Rhodes,1067,Shift A,Machinist,2023-04-26,CNC Level II,2027-02-05
+OPR-003,Angie Henderson,1013,Shift A,Machinist,2017-07-03,CNC Level I,2026-09-12
+OPR-004,Daniel Wagner,1088,Shift A,Machinist,2022-08-03,Setup,2026-01-23
+OPR-005,Cristian Santos,1025,Shift A,Machinist,2015-12-23,Setup,2027-08-06
+OPR-006,Connie Lawrence,1071,Shift A,Machinist,2015-05-11,CNC Level I,2026-09-03
+OPR-007,Abigail Shaffer,1009,Shift A,Machinist,2017-06-14,CNC Level I,2027-10-30
+OPR-008,Gina Moore,1054,Shift A,Machinist,2021-10-01,CNC Level I,2026-12-20
+OPR-009,Gabrielle Davis,1096,Shift B,Machinist,2023-01-11,Setup,2025-08-15
+OPR-010,Ryan Munoz,1031,Shift B,Machinist,2022-11-12,Setup,2027-08-03
+OPR-011,Monica Herrera,1078,Shift B,Machinist,2017-06-21,CNC Level II,2027-03-11
+OPR-012,Jamie Arnold,1005,Shift B,Machinist,2015-01-27,CNC Level I,2027-08-06
+OPR-013,Lisa Hensley,1063,Shift B,Machinist,2018-10-25,CNC Level II,2026-11-06
+OPR-014,Michele Williams,1019,Shift B,Machinist,2017-05-31,CNC Level II,2026-09-12
+OPR-015,Dylan Miller,1085,Shift B,Machinist,2016-01-15,CNC Level II,2026-09-07
+OPR-016,Brian Ramirez,1048,Shift B,Machinist,2019-01-10,CNC Level II,2027-02-25
+OPR-017,Holly Wood,1092,Shift A,Maintenance Tech,2015-06-27,Setup,2027-09-13
+OPR-018,Derek Zuniga,1037,Shift A,Maintenance Tech,2021-01-05,CNC Level I,2027-06-22
+OPR-019,Lisa Jackson,1074,Shift B,Maintenance Tech,2015-11-19,Setup,2027-03-27
+OPR-020,Carla Gray,1051,Shift B,Maintenance Tech,2022-01-18,Setup,2027-06-05

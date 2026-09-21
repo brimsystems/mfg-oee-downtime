@@ -1,0 +1,130 @@
+version: 2
+
+models:
+
+  # ── mart_oee__machine_performance ─────────────────────────────────────────
+  - name: mart_oee__machine_performance
+    description: >
+      OEE decomposed into Availability, Performance, and Quality Rate by machine,
+      shift, and day. Grain: one row per (machine_id, shift, period_date).
+    columns:
+      - name: performance_key
+        tests:
+          - not_null
+          - unique
+      - name: availability
+        tests:
+          - not_null
+      - name: performance
+        tests:
+          - not_null
+      - name: oee
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "oee >= 0 and oee <= 1"
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "abs(oee - round(availability * performance * quality_rate, 4)) < 0.001"
+
+  # ── mart_oee__downtime_analysis ───────────────────────────────────────────
+  - name: mart_oee__downtime_analysis
+    description: >
+      Unified unplanned-downtime fact from MachineMetrics state intervals and
+      Limble unplanned repairs. Grain: one row per downtime event.
+    columns:
+      - name: downtime_key
+        tests:
+          - not_null
+          - unique
+      - name: source_system
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['MACHINE_STATE', 'CMMS_REPAIR']
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('int_dim_machines')
+                field: machine_id
+      - name: failure_code
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['TOOLING', 'MECHANICAL', 'ELECTRICAL', 'OPERATOR_INDUCED', 'ENVIRONMENTAL']
+              config:
+                where: "source_system = 'CMMS_REPAIR'"
+      - name: downtime_hours
+        tests:
+          - not_null
+      - name: is_shift_startup
+        tests:
+          - not_null
+
+  # ── mart_oee__pm_compliance ───────────────────────────────────────────────
+  - name: mart_oee__pm_compliance
+    description: >
+      Preventive-maintenance compliance and current tracker status. Grain: one
+      row per machine.
+    columns:
+      - name: machine_id
+        tests:
+          - not_null
+          - unique
+      - name: pct_ontime
+        tests:
+          - not_null
+      - name: pm_status
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Overdue', 'Due Soon', 'On Track']
+
+  # ── mart_oee__operator_setup ──────────────────────────────────────────────
+  - name: mart_oee__operator_setup
+    description: >
+      Operator setup-time summary versus the machinist cohort median. Grain: one
+      row per machinist.
+    columns:
+      - name: operator_id
+        tests:
+          - not_null
+          - unique
+      - name: total_jobs
+        tests:
+          - not_null
+      - name: median_setup_hours
+        tests:
+          - not_null
+      - name: setup_ratio_vs_cohort
+        tests:
+          - not_null
+
+  # ── mart_ml__rul_features ─────────────────────────────────────────────────
+  - name: mart_ml__rul_features
+    description: >
+      Feature table for the Remaining Useful Life model. Grain: one row per
+      (machine_id, observation_date, shift). Backward-looking features and a
+      forward-looking, horizon-capped days-to-failure target.
+    columns:
+      - name: rul_key
+        tests:
+          - not_null
+          - unique
+      - name: target_days_to_failure
+        tests:
+          - not_null
+      - name: is_censored
+        tests:
+          - not_null
+      - name: machine_type
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.expression_is_true:
+          arguments:
+            expression: "target_days_to_failure >= 0 and target_days_to_failure <= {{ var('rul_horizon_days') }}"

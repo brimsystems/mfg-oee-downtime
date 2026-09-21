@@ -1,0 +1,4 @@
+model_type,val_mae,val_rmse,val_r2
+xgboost,6.006,8.542,0.634
+random_forest,6.095,8.729,0.618
+linear_regression,7.078,9.823,0.516

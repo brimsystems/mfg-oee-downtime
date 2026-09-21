@@ -1,0 +1,13 @@
+machine_id,machine_type,controller_type,location_cell,machine_age_years,max_spindle_rpm,install_date
+MCH-001,CNC Lathe,Fanuc,Cell A,2,5000,2024-01-01
+MCH-002,CNC Lathe,Fanuc,Cell A,4,4500,2022-01-01
+MCH-003,CNC Lathe,Fanuc,Cell A,6,5000,2020-01-01
+MCH-004,CNC Lathe,Fanuc,Cell A,8,4000,2018-01-01
+MCH-005,Vertical Mill,Haas,Cell B,2,12000,2024-01-01
+MCH-006,Vertical Mill,Haas,Cell B,5,10000,2021-01-01
+MCH-007,Vertical Mill,Haas,Cell B,12,8000,2014-01-01
+MCH-008,Vertical Mill,Haas,Cell B,9,10000,2017-01-01
+MCH-009,Horizontal Mill,Mazak,Cell C,7,15000,2019-01-01
+MCH-010,Horizontal Mill,Mazak,Cell C,8,12000,2018-01-01
+MCH-011,Horizontal Mill,Mazak,Cell C,13,10000,2013-01-01
+MCH-012,Horizontal Mill,Mazak,Cell C,10,12000,2016-01-01

@@ -1,0 +1,114 @@
+version: 2
+
+models:
+
+  - name: int_dim_machines
+    description: >
+      Conformed machine dimension. One row per machine_id. The unique test
+      enforces grain.
+    columns:
+      - name: machine_id
+        tests:
+          - not_null
+          - unique
+      - name: age_band
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['<3 yrs', '3-7 yrs', '7-10 yrs', '11+ yrs']
+      - name: is_aging_asset
+        tests:
+          - not_null
+
+  - name: int_dim_operators
+    description: >
+      Conformed operator dimension and the payroll-number crosswalk. One row per
+      operator. Unique on both operator_id and employee_number confirms the two
+      identifier schemes are one-to-one.
+    columns:
+      - name: operator_id
+        tests:
+          - not_null
+          - unique
+      - name: employee_number
+        tests:
+          - not_null
+          - unique
+      - name: cert_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Current', 'Expiring Soon', 'Lapsed']
+
+  - name: int_dim_shifts
+    description: >
+      Shift calendar. One row per (calendar_date, shift_code). Unique on
+      shift_key enforces grain.
+    columns:
+      - name: shift_key
+        tests:
+          - not_null
+          - unique
+      - name: shift_code
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['A', 'B']
+      - name: shift_start_ts
+        tests:
+          - not_null
+      - name: shift_end_ts
+        tests:
+          - not_null
+
+  - name: int_fct_machine_states
+    description: >
+      Machine state fact enriched with machine and operator dimensions. One row
+      per event_id. not_null on machine_type and operator_id confirms the
+      dimension joins resolved for every event.
+    columns:
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('int_dim_machines')
+                field: machine_id
+      - name: machine_type
+        tests:
+          - not_null
+      - name: operator_id
+        tests:
+          - not_null
+
+  - name: int_fct_maintenance_events
+    description: >
+      Maintenance event fact enriched with the machine dimension and PM
+      compliance flags. One row per maintenance_id. not_null on machine_type
+      confirms the machine join resolved for every event.
+    columns:
+      - name: maintenance_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('int_dim_machines')
+                field: machine_id
+      - name: machine_type
+        tests:
+          - not_null
+      - name: technician_empid
+        tests:
+          - relationships:
+              arguments:
+                to: ref('int_dim_operators')
+                field: employee_number
+      - name: is_pm_ontime
+        tests:
+          - not_null

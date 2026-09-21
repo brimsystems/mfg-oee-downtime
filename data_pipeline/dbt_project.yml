@@ -1,0 +1,46 @@
+name: 'oee_predmaint'
+version: '1.0.0'
+profile: 'oee_predmaint'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  # Observation window and reference date — keep in sync with the data generator.
+  start_date: '2023-01-02'
+  end_date: '2026-03-31'
+  as_of_date: '2026-01-01'
+  pm_overdue_threshold_days: 14
+  pm_interval_days: 42
+  # Quality Rate is not captured digitally (quality is tracked on paper
+  # travelers). A plant-wide first-pass-yield estimate is applied as the OEE
+  # quality component and documented as an assumption in the diagnostic report.
+  assumed_quality_rate: 0.95
+  # Contribution margin per productive machine hour, by machine type, used to
+  # value downtime. Horizontal mills command higher rates (more capital-
+  # intensive, and typically running more complex work) than lathes.
+  contribution_margin_by_type:
+    "CNC Lathe": 95
+    "Vertical Mill": 125
+    "Horizontal Mill": 145
+  # RUL target: forward days-to-failure are capped beyond this horizon.
+  rul_horizon_days: 60
+  # Minutes after Shift B start treated as the shift-transition startup window.
+  shift_startup_window_minutes: 45
+
+models:
+  oee_predmaint:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

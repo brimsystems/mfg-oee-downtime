@@ -1,0 +1,39 @@
+version: 2
+
+# Raw extracts are read directly from CSV via DuckDB. Paths are relative to the
+# data_pipeline directory (the dbt working directory), so the project is
+# portable across environments without editing absolute locations.
+
+sources:
+  - name: machinemetrics
+    tables:
+      - name: machines
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/machinemetrics/machines.csv')"
+      - name: production_events
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/machinemetrics/production_events.csv')"
+
+  - name: hr
+    tables:
+      - name: operators
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/hr/operators.csv')"
+
+  - name: erp
+    tables:
+      - name: work_orders
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/erp/work_orders.csv')"
+
+  - name: cmms
+    tables:
+      - name: maintenance_records
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/cmms/maintenance_records.csv')"
+
+  - name: sensors
+    tables:
+      - name: sensor_readings
+        meta:
+          external_location: "read_csv_auto('../data_source/raw/sensors/sensor_readings.csv')"

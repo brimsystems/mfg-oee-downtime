@@ -1,0 +1,151 @@
+version: 2
+
+models:
+
+  - name: stg_machinemetrics__machines
+    columns:
+      - name: machine_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['CNC Lathe', 'Vertical Mill', 'Horizontal Mill']
+      - name: controller_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Fanuc', 'Haas', 'Mazak']
+      - name: location_cell
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Cell A', 'Cell B', 'Cell C']
+
+  - name: stg_hr__operators
+    columns:
+      - name: operator_id
+        tests:
+          - not_null
+          - unique
+      - name: employee_number
+        tests:
+          - not_null
+          - unique
+      - name: shift
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Shift A', 'Shift B']
+      - name: role
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Machinist', 'Maintenance Tech']
+      - name: certification
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['CNC Level I', 'CNC Level II', 'Setup']
+
+  - name: stg_machinemetrics__production_events
+    columns:
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_machinemetrics__machines')
+                field: machine_id
+      - name: shift
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['A', 'B']
+      - name: machine_state
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 'RUNNING'
+                  - 'IDLE'
+                  - 'SETUP'
+                  - 'UNPLANNED_DOWN'
+                  - 'PLANNED_DOWN'
+                  - 'ALARM'
+      - name: operator_empid
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_hr__operators')
+                field: employee_number
+
+  - name: stg_erp__work_orders
+    columns:
+      - name: work_order_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_machinemetrics__machines')
+                field: machine_id
+      - name: operator_empid
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_hr__operators')
+                field: employee_number
+      - name: job_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['COMPLETE', 'IN_PROGRESS', 'ON_HOLD']
+      - name: material_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Aluminum', 'Steel', 'Stainless', 'Titanium']
+
+  - name: stg_cmms__maintenance_records
+    columns:
+      - name: maintenance_id
+        tests:
+          - not_null
+          - unique
+      - name: machine_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_machinemetrics__machines')
+                field: machine_id
+      - name: maintenance_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['PLANNED_PM', 'UNPLANNED_REPAIR', 'INSPECTION']
+      - name: failure_code
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 'TOOLING'
+                  - 'MECHANICAL'
+                  - 'ELECTRICAL'
+                  - 'OPERATOR_INDUCED'
+                  - 'ENVIRONMENTAL'
+              config:
+                where: "failure_code is not null"
+      - name: technician_empid
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_hr__operators')
+                field: employee_number
