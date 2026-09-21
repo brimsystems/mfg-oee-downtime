@@ -1,13 +1,13 @@
-# Manufacturing Data Platform: OEE & Predictive Maintenance
+# Manufacturing Data Platform: OEE, Machine Health & Predictive Maintenance
 
-**An end-to-end data platform for a mid-sized manufacturer, spanning data engineering, analytics and machine learning, applied to machine reliability and unplanned downtime.**
+**An end-to-end data platform for a mid-sized manufacturer, spanning data engineering, analytics and machine learning, applied to machine health and unplanned downtime.**
 
 It starts with a **data pipeline** that integrates machine, sensor, maintenance and order data from five disconnected systems into a single modeled dataset.
 
 An **analytics and ML layer** is then built on top of that integrated dataset, including:
 
 1. **Analytics diagnostics report** that uncovers where OEE is lost and what drives unplanned downtime
-2. **KPI dashboard** that tracks OEE, reliability and PM compliance, laid out by week and month
+2. **KPI dashboard** that tracks OEE, reliability and maintenance, laid out by week and month
 3. **Machine learning model** that predicts each machine's remaining time to its next unplanned failure and flags it before it happens, supported by technical documentation and MLOps monitoring in production
 
 The machine learning model's failure predictions are embedded into the company's existing CMMS, as shown below:
