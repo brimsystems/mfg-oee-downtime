@@ -20,11 +20,11 @@ The machine learning model's failure predictions are embedded into the company's
 
 ## Business Context
 
-A precision machining shop running twelve CNC machines across three cells was losing production hours to unplanned failures. To date, maintenance ran on a fixed calendar: every machine was serviced on the same interval whether it needed it or not, so healthy machines were serviced too often while the aging ones still failed between visits.
+A precision machining shop (~$40M revenue) ran twelve CNC machines with almost no monitoring in place. Availability and cycle-time performance went unmeasured, and machine downtime was recorded only after the fact, without a dependable account of its cause or its cost. As a result, maintenance ran on a fixed calendar, servicing every machine at the same interval, so healthy machines lost production time to service they did not need while unplanned failures continued at elevated rates.
 
-The data that could anticipate those failures was already being captured, just split across five disconnected systems: machine state in the MES, condition-monitoring sensors on every spindle, maintenance and PM history in the CMMS, job and schedule data in the ERP, and operator records in HR. Integrating these disparate systems revealed the conditions that precede a breakdown, for example an aging machine with rising alarm counts and spindle vibration running well past its scheduled PM.
+To close that gap, the shop fitted condition-monitoring sensors to every machine. On their own, the readings say little. Integrated with machine state, work-order and maintenance history from the MES, ERP and CMMS, they support two things at once. The first is a true OEE picture, with availability, performance and quality measured for each machine. The second is visibility into the conditions that precede a breakdown, which a machine learning model converts into a predicted time to failure, enabling preventive maintenance.
 
-Going forward, each machine's time to its next likely failure is estimated before it happens, and the reasons behind the flag are visible while there is still time to schedule the work, order the part or move the job.
+The shop can now see where its production hours go and which losses are worth addressing first. Maintenance runs against machine condition rather than the calendar, with enough lead time to schedule the work or move the job to another machine. Taken together, machine capacity becomes better optimized and maintenance that used to be unplanned becomes scheduled.
 
 ---
 
