@@ -1,6 +1,6 @@
 # Manufacturing Data Platform: OEE, Machine Health & Predictive Maintenance
 
-**An end-to-end data platform for a mid-sized manufacturer, spanning data engineering, analytics and machine learning, applied to machine health and unplanned downtime.**
+**An end-to-end data platform for a mid-sized manufacturer, spanning data engineering, analytics and machine learning, applied to OEE, machine health and predictive maintenance.**
 
 It starts with a **data pipeline** that integrates machine, sensor, maintenance and order data from five disconnected systems into a single modeled dataset.
 
