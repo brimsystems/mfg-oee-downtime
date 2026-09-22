@@ -122,4 +122,13 @@ The report generators write standalone HTML; the copies served by GitHub Pages l
 
 ---
 
+## Code
+
+Selected source, each file self-contained (it references the generated data and modeled marts but reads on its own):
+
+- **[Data pipeline (dbt on DuckDB)](code/dbt_pipeline.sql)**: staging, intermediate and mart models in dependency order.
+- **[ML model](code/ml_model.py)**: feature engineering, candidate training and selection, batch scoring, and drift monitoring.
+
+---
+
 Brian Davis, fractional data engineering and analytics partner for SMB manufacturers &middot; brian@brimsystems.com
