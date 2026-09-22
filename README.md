@@ -4,7 +4,7 @@
 
 It starts with a **data pipeline** that integrates machine, sensor, maintenance and order data from five disconnected systems into a single modeled dataset.
 
-An **analytics and ML layer** is then built on top of that integrated dataset, including:
+An **analytics and ML layer** is then built on top of that integrated data source, including:
 
 1. **Analytics diagnostics report** that uncovers where OEE is lost and what drives unplanned downtime
 2. **KPI dashboard** that tracks OEE, reliability and maintenance, laid out by week and month
