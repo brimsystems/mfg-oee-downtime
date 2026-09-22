@@ -12,9 +12,9 @@ An **analytics and ML layer** is then built on top of that integrated data sourc
 
 The machine learning model's failure predictions are embedded into the company's existing CMMS, as shown below:
 
-[![CMMS maintenance queue with embedded remaining-useful-life flags](docs/screenshots/cmms_queue.png)](https://brimsystems.github.io/mfg-oee-downtime/docs/index.html)
+[![CMMS maintenance queue with embedded remaining-useful-life flags](docs/screenshots/cmms_queue.png)](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/index.html)
 
-> **[Open the live CMMS maintenance queue &rarr;](https://brimsystems.github.io/mfg-oee-downtime/docs/index.html)** &nbsp;·&nbsp; **[All six deliverables &rarr;](https://brimsystems.github.io/mfg-oee-downtime/)**
+> **[Open the live CMMS maintenance queue &rarr;](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/index.html)** &nbsp;·&nbsp; **[All six deliverables &rarr;](https://brimsystems.github.io/mfg-oee-predmaintenance/)**
 
 ---
 
@@ -32,12 +32,12 @@ The shop can now see where its production hours go and which losses are worth ad
 
 | # | Deliverable | What it is | Links |
 |---|---|---|---|
-| 1 | CMMS maintenance queue | The predictive maintenance model embedded in the shop's CMMS: each machine's predicted days to next failure, OEE health and maintenance priority, ranked by urgency. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/index.html) |
-| 2 | Analytics diagnostic report | Where OEE is lost across availability, performance and quality, the downtime Pareto, PM compliance, and the cross-system conditions that drive failures. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/analytics_report.html) |
-| 3 | KPI dashboard | The recurring weekly and monthly view of OEE, machine reliability and maintenance compliance by machine, with historical trends. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/dashboard.html) |
-| 4 | ML model overview & performance report | A high-level model summary: what the model predicts, how it performs, the downtime it helps avoid, and its limits. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/model_overview.html) |
-| 5 | ML technical report | Feature engineering, target construction, the time-based split, hyperparameter tuning, residual analysis, and calibration. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/technical_report.html) |
-| 6 | MLOps monitoring report | Monitoring across periods on four layers (performance, target, prediction, and feature drift) with a rules-based retraining decision. | [View](https://brimsystems.github.io/mfg-oee-downtime/docs/reports/monitoring_report.html) |
+| 1 | CMMS maintenance queue | The predictive maintenance model embedded in the shop's CMMS: each machine's predicted days to next failure, OEE health and maintenance priority, ranked by urgency. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/index.html) |
+| 2 | Analytics diagnostic report | Where OEE is lost across availability, performance and quality, the downtime Pareto, PM compliance, and the cross-system conditions that drive failures. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/reports/analytics_report.html) |
+| 3 | KPI dashboard | The recurring weekly and monthly view of OEE, machine reliability and maintenance compliance by machine, with historical trends. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/reports/dashboard.html) |
+| 4 | ML model overview & performance report | A high-level model summary: what the model predicts, how it performs, the downtime it helps avoid, and its limits. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/reports/model_overview.html) |
+| 5 | ML technical report | Feature engineering, target construction, the time-based split, hyperparameter tuning, residual analysis, and calibration. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/reports/technical_report.html) |
+| 6 | MLOps monitoring report | Monitoring across periods on four layers (performance, target, prediction, and feature drift) with a rules-based retraining decision. | [View](https://brimsystems.github.io/mfg-oee-predmaintenance/docs/reports/monitoring_report.html) |
 
 ---
 
