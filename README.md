@@ -55,10 +55,10 @@ The shop can now see where its production hours go and which losses are worth ad
 
 | File | What it does |
 |---|---|
-| `features.py` | Builds the model features (machine age, rolling downtime and alarm counts, utilization, time since last failure and PM, PM-overdue flags, and condition-monitoring sensor means and anomaly scores, plus engineered interaction terms) from the conformed marts. |
+| `features.py` | Builds the model features from the conformed data marts. |
 | `training.py` | Trains and tunes the three model candidates, then selects and registers the best. |
 | `scoring.py` | Runs monthly batch scoring to predict each machine's remaining useful life, its days to next failure, across the forward window. |
-| `monitoring.py` | Four-layer drift and performance monitoring against reference windows, following MLOps best practices across performance, target drift, prediction drift and feature drift. |
+| `monitoring.py` | Four-layer drift (performance, target, prediction and feature) and performance monitoring against reference windows, following MLOps best practices. |
 
 ---
 
