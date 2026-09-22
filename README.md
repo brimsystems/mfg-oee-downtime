@@ -43,34 +43,15 @@ The shop can now see where its production hours go and which losses are worth ad
 
 ## Code
 
-The core source lives in two folders.
-
 ### Data pipeline: [`data_pipeline/models/`](data_pipeline/models/)
 
-dbt models on DuckDB, built in dependency order: staging normalizes each source extract, intermediate conforms them into shared dimensions and facts, and marts assemble the analysis-ready tables the reports and model read.
+| Layer | What it is, does and contains |
+|---|---|
+| Staging | One model per source table across MachineMetrics, the ERP, the CMMS, HR and the machine sensors. Each cleans, types and renames a single raw extract into a consistent shape, without joining across systems. |
+| Intermediate | Conforms the staged tables into shared dimensions (machines, operators, shifts) and facts (machine run, idle and down states, and maintenance and failure events). |
+| Marts | The analysis-ready tables the reports and model read: OEE and machine performance, downtime analysis, PM compliance, operator setup, and the remaining-useful-life feature table. |
 
-| Layer | Model | What it does |
-|---|---|---|
-| Staging | `stg_cmms__maintenance_records` | Maintenance work orders and PM records from the CMMS. |
-| Staging | `stg_erp__work_orders` | Production work orders from the ERP. |
-| Staging | `stg_hr__operators` | Operator roster from HR. |
-| Staging | `stg_machinemetrics__machines` | Machine master from MachineMetrics. |
-| Staging | `stg_machinemetrics__production_events` | Machine run, idle and down production events. |
-| Staging | `stg_sensors__readings` | Raw machine sensor readings. |
-| Intermediate | `int_dim_machines` | Conformed machine dimension. |
-| Intermediate | `int_dim_operators` | Conformed operator dimension. |
-| Intermediate | `int_dim_shifts` | Shift calendar dimension. |
-| Intermediate | `int_fct_machine_states` | Machine run, idle and down states over time. |
-| Intermediate | `int_fct_maintenance_events` | Maintenance and failure event fact. |
-| Marts | `mart_oee__machine_performance` | OEE across availability, performance and quality by machine. |
-| Marts | `mart_oee__downtime_analysis` | Downtime Pareto and cause breakdown. |
-| Marts | `mart_oee__pm_compliance` | Preventive-maintenance compliance by machine. |
-| Marts | `mart_oee__operator_setup` | Operator setup and changeover performance. |
-| Marts | `mart_ml__rul_features` | Feature table for the remaining-useful-life model. |
-
-### ML model: [`ml/src/`](ml/src/)
-
-The remaining-useful-life model lifecycle, from features through monitoring.
+### Machine learning model: [`ml/src/`](ml/src/)
 
 | File | What it does |
 |---|---|
