@@ -41,6 +41,46 @@ The shop can now see where its production hours go and which losses are worth ad
 
 ---
 
+## Code
+
+The core source lives in two folders.
+
+### Data pipeline: [`data_pipeline/models/`](data_pipeline/models/)
+
+dbt models on DuckDB, built in dependency order: staging normalizes each source extract, intermediate conforms them into shared dimensions and facts, and marts assemble the analysis-ready tables the reports and model read.
+
+| Layer | Model | What it does |
+|---|---|---|
+| Staging | `stg_cmms__maintenance_records` | Maintenance work orders and PM records from the CMMS. |
+| Staging | `stg_erp__work_orders` | Production work orders from the ERP. |
+| Staging | `stg_hr__operators` | Operator roster from HR. |
+| Staging | `stg_machinemetrics__machines` | Machine master from MachineMetrics. |
+| Staging | `stg_machinemetrics__production_events` | Machine run, idle and down production events. |
+| Staging | `stg_sensors__readings` | Raw machine sensor readings. |
+| Intermediate | `int_dim_machines` | Conformed machine dimension. |
+| Intermediate | `int_dim_operators` | Conformed operator dimension. |
+| Intermediate | `int_dim_shifts` | Shift calendar dimension. |
+| Intermediate | `int_fct_machine_states` | Machine run, idle and down states over time. |
+| Intermediate | `int_fct_maintenance_events` | Maintenance and failure event fact. |
+| Marts | `mart_oee__machine_performance` | OEE across availability, performance and quality by machine. |
+| Marts | `mart_oee__downtime_analysis` | Downtime Pareto and cause breakdown. |
+| Marts | `mart_oee__pm_compliance` | Preventive-maintenance compliance by machine. |
+| Marts | `mart_oee__operator_setup` | Operator setup and changeover performance. |
+| Marts | `mart_ml__rul_features` | Feature table for the remaining-useful-life model. |
+
+### ML model: [`ml/src/`](ml/src/)
+
+The remaining-useful-life model lifecycle, from features through monitoring.
+
+| File | What it does |
+|---|---|
+| `features.py` | Builds the model features from the conformed marts. |
+| `training.py` | Trains and tunes the candidate regressors, then selects and registers the best. |
+| `scoring.py` | Runs batch scoring for each machine's time to next failure. |
+| `monitoring.py` | Four-layer drift and performance monitoring against reference windows. |
+
+---
+
 ## How it works
 
 ```mermaid
@@ -119,15 +159,6 @@ The report generators write standalone HTML; the copies served by GitHub Pages l
 | Modeling | XGBoost, scikit-learn, Optuna, SHAP |
 | MLOps | MLflow (tracking & registry), Evidently (drift), Prefect (orchestration) |
 | Delivery | Static HTML, GitHub Pages |
-
----
-
-## Code
-
-Selected source, each file self-contained (it references the generated data and modeled marts but reads on its own):
-
-- **[Data pipeline (dbt on DuckDB)](code/dbt_pipeline.sql)**: staging, intermediate and mart models in dependency order.
-- **[ML model](code/ml_model.py)**: feature engineering, candidate training and selection, batch scoring, and drift monitoring.
 
 ---
 
