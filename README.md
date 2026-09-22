@@ -47,7 +47,7 @@ The shop can now see where its production hours go and which losses are worth ad
 
 | Layer | What it is, does and contains |
 |---|---|
-| Staging | One model per source table (MachineMetrics, ERP, CMMS, HR and Sensors). Each cleans and transforms raw data into a consistent shape and format. |
+| Staging | One model per source table (Sensors, MachineMetrics, ERP, CMMS, HR). Each cleans and transforms raw data into a consistent shape and format. |
 | Intermediate | Joins the staged tables into conformed datasets: shared machine, operator and shift dimensions, a time series of machine run, idle and down states, and a maintenance and failure event history. |
 | Marts | Aggregate and roll up the intermediate datasets into the analysis-ready tables the reports and model read: OEE across availability, performance and quality by machine; the downtime Pareto and its causes; PM compliance; operator setup performance; and the remaining-useful-life feature table. |
 
