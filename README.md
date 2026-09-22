@@ -47,18 +47,18 @@ The shop can now see where its production hours go and which losses are worth ad
 
 | Layer | What it is, does and contains |
 |---|---|
-| Staging | One model per source table across MachineMetrics, the ERP, the CMMS, HR and the machine sensors. Each cleans, types and renames a single raw extract into a consistent shape, without joining across systems. |
-| Intermediate | Conforms the staged tables into shared dimensions (machines, operators, shifts) and facts (machine run, idle and down states, and maintenance and failure events). |
-| Marts | The analysis-ready tables the reports and model read: OEE and machine performance, downtime analysis, PM compliance, operator setup, and the remaining-useful-life feature table. |
+| Staging | One model per source table (MachineMetrics, ERP, CMMS, HR and Sensors). Each cleans and transforms raw data into a consistent shape and format. |
+| Intermediate | Joins the staged tables into conformed datasets: shared machine, operator and shift dimensions, a time series of machine run, idle and down states, and a maintenance and failure event history. |
+| Marts | Aggregate and roll up the intermediate datasets into the analysis-ready tables the reports and model read: OEE across availability, performance and quality by machine; the downtime Pareto and its causes; PM compliance; operator setup performance; and the remaining-useful-life feature table. |
 
 ### Machine learning model: [`ml/src/`](ml/src/)
 
 | File | What it does |
 |---|---|
-| `features.py` | Builds the model features from the conformed marts. |
-| `training.py` | Trains and tunes the candidate regressors, then selects and registers the best. |
-| `scoring.py` | Runs batch scoring for each machine's time to next failure. |
-| `monitoring.py` | Four-layer drift and performance monitoring against reference windows. |
+| `features.py` | Builds the model features (machine age, rolling downtime and alarm counts, utilization, time since last failure and PM, PM-overdue flags, and condition-monitoring sensor means and anomaly scores, plus engineered interaction terms) from the conformed marts. |
+| `training.py` | Trains and tunes the three model candidates, then selects and registers the best. |
+| `scoring.py` | Runs monthly batch scoring to predict each machine's remaining useful life, its days to next failure, across the forward window. |
+| `monitoring.py` | Four-layer drift and performance monitoring against reference windows, following MLOps best practices across performance, target drift, prediction drift and feature drift. |
 
 ---
 
