@@ -140,7 +140,3 @@ The report generators write standalone HTML; the copies served by GitHub Pages l
 | Modeling | XGBoost, scikit-learn, Optuna, SHAP |
 | MLOps | MLflow (tracking & registry), Evidently (drift), Prefect (orchestration) |
 | Delivery | Static HTML, GitHub Pages |
-
----
-
-Brian Davis, fractional data engineering and analytics partner for SMB manufacturers &middot; brian@brimsystems.com
